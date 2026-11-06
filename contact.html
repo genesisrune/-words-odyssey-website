@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#fbf7e8" />
+  <title>Contact &amp; Support — Words Odyssey</title>
+  <meta name="description" content="Contact Words Odyssey for game support, educational partnerships, cultural collaborations, press enquiries, institutional access, and volume purchases." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="contact-page">
+  <header class="site-header contact-header" aria-label="Site header">
+    <a class="brand" href="index.html" aria-label="Words Odyssey home">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-name"><strong>Words Odyssey</strong><span class="brand-descriptor" aria-hidden="true"><span class="brand-divider">|</span> Discover the Greek origins of English words</span></span>
+    </a>
+    <nav class="nav contact-nav" aria-label="Contact page navigation">
+      <a href="index.html">Home</a>
+      <a class="nav-cta" href="index.html#download"><span>App Store</span><span class="nav-cta-arrow" aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="contact-hero page-width" aria-labelledby="contact-title">
+      <div class="contact-heading">
+        <p class="eyebrow">Words Odyssey · Contact</p>
+        <h1 id="contact-title">Contact &amp; Support</h1>
+        <p class="contact-intro">Questions about Words Odyssey, need help with the game, or interested in a collaboration? We’d be happy to hear from you.</p>
+      </div>
+
+      <div class="contact-art" aria-label="Words Odyssey owl over an illustrated map of Greece">
+        <span class="contact-orbit orbit-one" aria-hidden="true"></span>
+        <span class="contact-orbit orbit-two" aria-hidden="true"></span>
+        <div class="contact-disc">
+          <div class="contact-art-layer contact-map-layer"><img src="assets/logo-background.png" alt="Illustrated map of Greece" /></div>
+          <div class="contact-art-layer contact-owl-layer"><img src="assets/logo-foreground.png" alt="Words Odyssey owl character" /></div>
+        </div>
+        <span class="contact-art-caption">A question is another place to begin.</span>
+      </div>
+    </section>
+
+    <div class="contact-rule" aria-hidden="true"></div>
+
+    <section class="contact-body page-width" aria-label="Ways to contact Words Odyssey">
+      <div class="contact-note">
+        <p class="contact-index">01 / 02</p>
+        <h2>How can we help?</h2>
+      </div>
+
+      <div class="contact-details contact-paths">
+        <section class="contact-path" aria-labelledby="support-heading">
+          <div class="contact-path-head">
+            <span class="contact-path-number">01</span>
+            <h3 id="support-heading">Support</h3>
+          </div>
+          <p>For help with the game.</p>
+          <p class="contact-path-note">To help us assist you, please include your device model, operating system version, and a short description of the issue.</p>
+        </section>
+
+        <section class="contact-path" aria-labelledby="partnerships-heading">
+          <div class="contact-path-head">
+            <span class="contact-path-number">02</span>
+            <h3 id="partnerships-heading">Partnerships &amp; institutional enquiries</h3>
+          </div>
+          <p>For educational partnerships, cultural collaborations, press enquiries, institutional access, or volume purchases.</p>
+          <p class="contact-path-note">Please include your organisation, the nature of your enquiry, and the approximate scale you have in mind.</p>
+        </section>
+
+        <a class="contact-email contact-email-shared" href="mailto:hello@wordsodyssey.com" aria-label="Email Words Odyssey at hello@wordsodyssey.com">
+          <span class="contact-email-label">Email Words Odyssey</span>
+          <strong>hello@wordsodyssey.com</strong>
+          <span class="contact-email-arrow" aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer contact-footer">
+    <div class="footer-inner page-width">
+      <a class="brand footer-brand" href="index.html"><span class="brand-mark" aria-hidden="true"></span><span class="brand-name"><strong>Words Odyssey</strong><span class="brand-descriptor"><span class="brand-divider">|</span> Discover the Greek origins of English words</span></span></a>
+      <div class="footer-links"><a href="index.html">Home</a><a href="privacy.html">Privacy Policy</a></div>
+      <p>© 2026 Words Odyssey</p>
+    </div>
+  </footer>
+
+  <script>
+  (() => {
+    const header = document.querySelector('.site-header');
+    const art = document.querySelector('.contact-art');
+    const map = document.querySelector('.contact-map-layer');
+    const owl = document.querySelector('.contact-owl-layer');
+    if (!header) return;
+
+    const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 10);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    if (!art || !map || !owl || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    let tx = 0, ty = 0, cx = 0, cy = 0;
+    window.addEventListener('pointermove', (e) => {
+      tx = (e.clientX / window.innerWidth - .5) * 2;
+      ty = (e.clientY / window.innerHeight - .5) * 2;
+    }, { passive: true });
+
+    const frame = () => {
+      cx += (tx - cx) * .025;
+      cy += (ty - cy) * .025;
+      map.style.setProperty('--cx', `${cx * 3.5}px`);
+      map.style.setProperty('--cy', `${cy * 2.7}px`);
+      owl.style.setProperty('--cx', `${cx * 7}px`);
+      owl.style.setProperty('--cy', `${cy * 5.5}px`);
+      requestAnimationFrame(frame);
+    };
+    frame();
+  })();
+  </script>
+</body>
+</html>
